@@ -1,23 +1,26 @@
 import React from 'react';
-import { Button, Text } from '@maxst-designsystem/maxst-design-system';
+import { Button } from '@maxst-designsystem/maxst-design-system';
 import * as Style from './gnb.style';
 import { useTranslation } from 'react-i18next';
-import { LanguageLineIcon } from '@maxst-designsystem/icons';
 import Image from 'next/image';
+import useGnbButton from '@/src/hooks/useGnbButton';
 
 function Gnb() {
   const { t } = useTranslation();
+  const { onClickGnbButton } = useGnbButton();
 
   const buttonData = [
     {
-      text: '지역 구축 신청하기',
+      text: t('main_hero_button_01'),
       type: 'secondary',
-      url: '',
+      openModal: true,
+      link: '1',
     },
     {
-      text: '맥스투어 체험해보기',
+      text: t('main_hero_button_02'),
       type: 'primary',
-      url: '',
+      openModal: false,
+      link: 'https://www.naver.com/',
     },
   ];
   return (
@@ -28,7 +31,13 @@ function Gnb() {
         </Style.Company>
         <Style.SiteMap>
           {buttonData?.map((item: any, index: number) => (
-            <Button key={index} type={item.type} size='xl' className='button'>
+            <Button
+              key={index}
+              type={item.type}
+              size='xl'
+              className='button'
+              onClick={() => onClickGnbButton(item)}
+            >
               {item.text}
             </Button>
           ))}

@@ -80,3 +80,42 @@ export const CropBox = styled.div`
     `;
   }}
 `;
+
+export const CardBox = styled.div({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'space-between',
+});
+
+export const CardItem = styled.div<{ 'data-src': string }>((props) => {
+  return {
+    width: 'calc(100% - 24px)',
+    height: 580,
+    display: 'flex',
+    justifyContent: 'space-between',
+    background: '#fff',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundImage: `url(${props['data-src']})`,
+    backgroundSize: 'cover',
+    cursor: 'pointer',
+    '& > p': {
+      color: '#606060',
+    },
+    '&:hover': {
+      backgroundSize: '110%',
+      '.cardCropBox': {
+        display: 'block',
+      },
+      '.button': {
+        background: '#fff',
+        color: '#222222',
+        borderColor: '#C2C2C2',
+        '& svg': {
+          color: '#222222',
+        },
+      },
+    },
+    position: 'relative',
+  };
+});

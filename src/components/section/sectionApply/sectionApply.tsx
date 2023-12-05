@@ -8,9 +8,16 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
 import { ArrowRightLineIcon } from '@maxst-designsystem/icons';
+import useGnbButton from '@/src/hooks/useGnbButton';
 
 function SectionApply() {
   const { t } = useTranslation();
+  const controls = useAnimation();
+  const { onClickGnbButton } = useGnbButton();
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
 
   const cardData = [
     {
@@ -19,7 +26,8 @@ function SectionApply() {
       description: t('main_body_text_22'),
       button: {
         text: t('main_body_text_23'),
-        url: '',
+        openModal: true,
+        link: '1',
       },
     },
     {
@@ -28,17 +36,13 @@ function SectionApply() {
       description: t('main_body_text_25'),
       button: {
         text: t('main_body_text_26'),
-        url: '',
+        openModal: true,
+        link: '2',
       },
     },
   ];
-  const controls = useAnimation();
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
 
-  const BoxVariants = {
+  const boxVariants = {
     hidden: (i: number) => ({ opacity: [0, 0.1], y: 100 }),
     visible: (i: number) => ({
       opacity: 1,
@@ -61,17 +65,20 @@ function SectionApply() {
         </Title>
       </Style.TitleBox>
       <MarginBox mt={93} />
-      <CardBox ref={ref}>
+      <Style.CardBox ref={ref}>
         {cardData.map((item: any, index: number) => (
           <motion.div
             key={index}
             ref={ref}
             animate={controls}
             initial='hidden'
-            variants={BoxVariants}
+            variants={boxVariants}
             custom={index}
           >
-            <CardItem data-src={item.img}>
+            <Style.CardItem
+              data-src={item.img}
+              onClick={() => onClickGnbButton(item?.button)}
+            >
               <Style.CropBox className={'cardCropBox'}></Style.CropBox>
               <Style.CardText>
                 <Title role={4} type='title' size='s' className='white'>
@@ -92,51 +99,12 @@ function SectionApply() {
                   {item.button.text}
                 </Button>
               </Style.ButtonWrapper>
-            </CardItem>
+            </Style.CardItem>
           </motion.div>
         ))}
-      </CardBox>
+      </Style.CardBox>
     </Section>
   );
 }
-
-const CardBox = styled.div({
-  width: '100%',
-  display: 'flex',
-  justifyContent: 'space-between',
-});
-
-const CardItem = styled.div<{ 'data-src': string }>((props) => {
-  return {
-    width: 'calc(100% - 24px)',
-    height: 580,
-    display: 'flex',
-    justifyContent: 'space-between',
-    background: '#fff',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundImage: `url(${props['data-src']})`,
-    backgroundSize: 'cover',
-    cursor: 'pointer',
-    '& > p': {
-      color: '#606060',
-    },
-    '&:hover': {
-      backgroundSize: '110%',
-      '.cardCropBox': {
-        display: 'block',
-      },
-      '.button': {
-        background: '#fff',
-        color: '#222222',
-        borderColor: '#C2C2C2',
-        '& svg': {
-          color: '#222222',
-        },
-      },
-    },
-    position: 'relative',
-  };
-});
 
 export default SectionApply;

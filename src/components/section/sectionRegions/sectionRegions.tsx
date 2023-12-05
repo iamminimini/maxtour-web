@@ -12,6 +12,12 @@ import Image from 'next/image';
 
 function SectionRegions() {
   const { t } = useTranslation();
+  const controls = useAnimation();
+  const [active, setActive] = useState(false);
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
 
   const cardData = [
     {
@@ -21,7 +27,7 @@ function SectionRegions() {
       title: t('main_body_text_03'),
       description: t('main_body_text_04'),
       button: {
-        text: '보러가기',
+        text: t('main_body_text_27'),
         url: '',
       },
     },
@@ -32,7 +38,7 @@ function SectionRegions() {
       title: t('main_body_text_05'),
       description: t('main_body_text_06'),
       button: {
-        text: '보러가기',
+        text: t('main_body_text_27'),
         url: '',
       },
     },
@@ -43,7 +49,7 @@ function SectionRegions() {
       title: t('main_body_text_07'),
       description: t('main_body_text_08'),
       button: {
-        text: '보러가기',
+        text: t('main_body_text_27'),
         url: '',
       },
     },
@@ -62,13 +68,6 @@ function SectionRegions() {
     }),
   };
 
-  const controls = useAnimation();
-  const [active, setActive] = useState(false);
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
-
   useEffect(() => {
     if (inView) {
       controls.start('visible');
@@ -81,7 +80,7 @@ function SectionRegions() {
         <TopTriangle />
         <TopLine />
       </BgTopBox>
-      <Section padding={'48px 0 132px'}>
+      <Section padding={'48px 0 52px'}>
         <Style.TitleBox ref={ref}>
           <Title role={4} type='title' size='xl'>
             <text
@@ -147,8 +146,6 @@ function SectionRegions() {
 
 const BgTopContainer = styled.div({
   width: '100%',
-  position: 'relative',
-  top: -80,
   '& > img': {
     width: '100%',
   },

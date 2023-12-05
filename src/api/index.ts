@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { DEVEL_URL } from '@/src/const/apiUrl';
 
-const baseURL = 'https://api.punkapi.com/v2';
+// const baseURL = 'https://api.punkapi.com/v2';
 
 const createAxios = (
   originUrl: any,
   url: any,
-  contentType = 'application/json; charset=utf-8',
+  contentType = 'application/json; charset=utf-8'
 ) => {
   return axios.create({
     baseURL: `${originUrl}${url}`,
@@ -19,10 +20,4 @@ const createAxios = (
   });
 };
 
-export const commonApi = axios.create({
-  baseURL: `${baseURL}`,
-  headers: {
-    'Cache-Control': 'no-cache',
-    'Access-Control-Allow-Origin': '*',
-  },
-});
+export const axiosPublic = createAxios(DEVEL_URL, '/v1/public');

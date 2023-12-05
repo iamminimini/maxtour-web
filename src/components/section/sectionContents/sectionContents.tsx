@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
-import { motion, useAnimation } from 'framer-motion';
+import { useAnimation } from 'framer-motion';
 
 function SectionContents() {
   const { t } = useTranslation();
@@ -77,9 +77,9 @@ function SectionContents() {
         </Title>
       </Style.Discription>
       <MarginBox mt={70} />
-      <CardBox ref={ref}>
+      <Style.CardBox ref={ref}>
         {cardData.map((item: any, index: number) => (
-          <CardItem
+          <Style.CardItem
             key={index}
             ref={ref}
             animate={controls}
@@ -87,7 +87,7 @@ function SectionContents() {
             variants={BoxVariants}
             custom={index}
           >
-            <CardText>
+            <Style.CardText>
               <Title role={4} type='title' size='m' className='white'>
                 {item.title}
               </Title>
@@ -95,7 +95,7 @@ function SectionContents() {
               <Text type='body' size='l'>
                 {item.description}
               </Text>
-            </CardText>
+            </Style.CardText>
             <Style.ImageBox>
               <Image
                 src={item.img}
@@ -104,37 +104,11 @@ function SectionContents() {
                 alt='img_function.png'
               />
             </Style.ImageBox>
-          </CardItem>
+          </Style.CardItem>
         ))}
-      </CardBox>
+      </Style.CardBox>
     </Section>
   );
 }
-
-const CardBox = styled.div({
-  width: '100%',
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'space-between',
-  '& div:nth-child(n+3)': {
-    marginTop: 24,
-  },
-});
-
-const CardItem = styled(motion.div)({
-  width: 'calc(50% - 12px)',
-  display: 'flex',
-  justifyContent: 'space-between',
-  height: 240,
-  background: '#fff',
-  '& > p': {
-    color: '#606060',
-  },
-});
-
-const CardText = styled.div({
-  padding: 32,
-  width: 330,
-});
 
 export default SectionContents;

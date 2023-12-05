@@ -1,28 +1,31 @@
 import React from 'react';
-import { Text } from '@maxst-designsystem/maxst-design-system';
+import i18n from 'i18next';
+import { Text, Button } from '@maxst-designsystem/maxst-design-system';
 import * as Style from './footer.style';
 import { useTranslation } from 'react-i18next';
 import { LanguageLineIcon } from '@maxst-designsystem/icons';
+import useGnbButton from '@/src/hooks/useGnbButton';
 
 function Footer() {
   const { t } = useTranslation();
+  const { onClickGnbButton } = useGnbButton();
 
   const siteMapData = [
     {
-      text: '맥스버스 바로가기',
-      url: '',
+      text: t('main_footer_01'),
+      link: `https://www.maxverse.io/${i18n.language}`,
     },
     {
-      text: '서비스 약관',
-      url: '',
+      text: t('main_footer_02'),
+      link: `https://www.maxverse.io/${i18n.language}/terms`,
     },
     {
-      text: '개인정보 처리방침',
-      url: '',
+      text: t('main_footer_03'),
+      link: `https://www.maxverse.io/${i18n.language}/privacy`,
     },
     {
-      text: '개인위치정보사업 약관',
-      url: '',
+      text: t('main_footer_04'),
+      link: `https://www.maxverse.io/${i18n.language}/location`,
     },
   ];
 
@@ -31,9 +34,14 @@ function Footer() {
       <Style.Footer>
         <Style.SiteMap>
           {siteMapData?.map((item: any, index: number) => (
-            <Text type='body' size='m'>
+            <Button
+              key={index}
+              size='s'
+              type='text'
+              onClick={() => onClickGnbButton(item)}
+            >
               {item.text}
-            </Text>
+            </Button>
           ))}
         </Style.SiteMap>
         <Style.Company>

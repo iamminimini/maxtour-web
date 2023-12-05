@@ -5,23 +5,25 @@ import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import MarginBox from '../common/marginbox';
 import { useInView, useScroll } from 'framer-motion';
+import useGnbButton from '@/src/hooks/useGnbButton';
 
 function Header() {
   const { t } = useTranslation();
 
-  const headerRef = useRef(null);
-  const headerView = useInView(headerRef);
+  const { onClickGnbButton } = useGnbButton();
 
   const buttonData = [
     {
-      text: '지역 구축 신청하기',
+      text: t('main_hero_button_01'),
       type: 'tertiary',
-      url: '',
+      openModal: true,
+      link: '1',
     },
     {
-      text: '맥스투어 체험해보기',
+      text: t('main_hero_button_02'),
       type: 'primary',
-      url: '',
+      openModal: false,
+      link: 'https://www.naver.com/',
     },
   ];
 
@@ -40,13 +42,18 @@ function Header() {
         </Style.TitleBox>
         <Style.ButtonBox>
           {buttonData?.map((item: any, index: number) => (
-            <Button key={index} type={item.type} size='xl' className='button'>
+            <Button
+              key={index}
+              type={item.type}
+              size='xl'
+              className='button'
+              onClick={() => onClickGnbButton(item)}
+            >
               {item.text}
             </Button>
           ))}
         </Style.ButtonBox>
       </Style.Header>
-      <div ref={headerRef} />
     </Style.Container>
   );
 }

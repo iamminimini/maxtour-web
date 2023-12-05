@@ -8,11 +8,23 @@ import Gnb from '@/src/components/gnb/gnb';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useInView, useScroll } from 'framer-motion';
 import Modal from '@/src/components/modal/modal';
+import i18n from '@/src/locales/i18n';
 
 function Index() {
   const { scrollY, scrollYProgress } = useScroll();
   const [isGnbActive, setIsGnbAtive] = useState(false);
   const TOP_HEIGHT = 630;
+
+  useEffect(() => {
+    const queryParameters = new URLSearchParams(window.location.search);
+    const lang = queryParameters.get('lang') || 'ko';
+    console.log('lang', lang);
+    onChangeLang(lang);
+  }, []);
+
+  const onChangeLang = (lang: string) => {
+    i18n.changeLanguage(lang);
+  };
 
   useEffect(() => {
     scrollY.onChange((latest) => {
@@ -28,17 +40,27 @@ function Index() {
     <Container className='container'>
       {isGnbActive && <Gnb />}
       <Modal />
-      <Header />
-      <SectionRegions />
-      <SectionContents />
-      <SectionApply />
-      <Footer />
+      <Contents>
+        <Header />
+        <SectionRegions />
+        <SectionContents />
+        <SectionApply />
+        <Footer />
+      </Contents>
     </Container>
   );
 }
 
 const Container = styled.div((props) => ({
   background: '#fff',
+}));
+
+const Contents = styled.div((props) => ({
+  background: '#fff',
+  width: '100%',
+  marginTop: 738,
+  position: 'relative',
+  top: -80,
 }));
 
 // const Section = styled.div((props) => ({

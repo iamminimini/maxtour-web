@@ -10,6 +10,9 @@ export const Container = styled.div`
       background-repeat: no-repeat;
       background-image: url(/images/img_hero_bg.png);
       background-size: cover;
+      position: fixed;
+      top: 0;
+      z-index: 0;
     `;
   }}
 `;

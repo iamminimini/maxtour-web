@@ -26,6 +26,7 @@ const SectionContainer = styled.div<{ bgcolor: string; padding: string }>(
     backgroundColor: props.bgcolor,
     display: 'flex',
     justifyContent: 'center',
+    position: 'relative',
   })
 );
 

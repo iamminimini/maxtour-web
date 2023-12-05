@@ -3,12 +3,14 @@ import styled from 'styled-components';
 
 type CheckboxPropsTypes = {
   label?: string;
+  value?: boolean;
   isError: boolean;
   handleChangeCheckbox: any;
 };
 
 export default function Checkbox({
   label,
+  value,
   isError,
   handleChangeCheckbox,
 }: CheckboxPropsTypes) {
@@ -20,6 +22,7 @@ export default function Checkbox({
         name={label}
         is-error={isError}
         onChange={handleChangeCheckbox}
+        checked={value}
       />
       <StyledP>{label}</StyledP>
     </StyledLabel>
