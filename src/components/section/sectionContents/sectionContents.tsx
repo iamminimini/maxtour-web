@@ -69,7 +69,7 @@ function SectionContents() {
             ></text>
           </Title>
         </Style.TitleBox>
-        <MarginBox mt={7} />
+        <MarginBox mt={16} />
         <Style.Discription>
           <Title role={4} type='title' size='xs' className='gray'>
             <text

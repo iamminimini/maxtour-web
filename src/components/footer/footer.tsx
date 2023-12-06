@@ -17,15 +17,15 @@ function Footer() {
     },
     {
       text: t('main_footer_02'),
-      link: `https://www.maxverse.io/${i18n.language}/terms`,
+      link: `https://docs.google.com/document/d/1RuIyxxJ0Sy_RLlv-YwxHsctFXD9JTaa4_A175l19rFE/edit?usp=sharing`,
     },
     {
       text: t('main_footer_03'),
-      link: `https://www.maxverse.io/${i18n.language}/privacy`,
+      link: `https://docs.google.com/document/d/1BpzAIxylLKqNUbgYSHg4D1BmdHqaKahLGOE5VqrhLVo/edit?usp=sharing`,
     },
     {
       text: t('main_footer_04'),
-      link: `https://www.maxverse.io/${i18n.language}/location`,
+      link: `https://docs.google.com/document/d/1BpzAIxylLKqNUbgYSHg4D1BmdHqaKahLGOE5VqrhLVo/edit?usp=sharing`,
     },
   ];
 

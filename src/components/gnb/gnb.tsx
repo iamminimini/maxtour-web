@@ -20,7 +20,7 @@ function Gnb() {
       text: t('main_hero_button_02'),
       type: 'primary',
       openModal: false,
-      link: 'https://www.naver.com/',
+      link: 'http://map.maxtour.io/xrmetaverse/',
     },
   ];
   return (

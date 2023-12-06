@@ -54,6 +54,12 @@ const useInquiry = (): ReturnType => {
       contents: '',
       agreement: false,
     });
+    setIsError({
+      category: false,
+      email: false,
+      contents: false,
+      agreement: false,
+    });
   }, [modalData.isOpen]);
 
   /**
