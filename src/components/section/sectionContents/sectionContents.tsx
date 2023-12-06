@@ -60,54 +60,60 @@ function SectionContents() {
   }, [controls, inView]);
 
   return (
-    <Section bgcolor='#374553'>
-      <Style.TitleBox>
-        <Title role={4} type='title' size='xl' className='white'>
-          <text
-            dangerouslySetInnerHTML={{ __html: t('main_body_text_09') }}
-          ></text>
-        </Title>
-      </Style.TitleBox>
-      <MarginBox mt={7} />
-      <Style.Discription>
-        <Title role={4} type='title' size='xs' className='gray'>
-          <text
-            dangerouslySetInnerHTML={{ __html: t('main_body_text_10') }}
-          ></text>
-        </Title>
-      </Style.Discription>
-      <MarginBox mt={70} />
-      <Style.CardBox ref={ref}>
-        {cardData.map((item: any, index: number) => (
-          <Style.CardItem
-            key={index}
-            ref={ref}
-            animate={controls}
-            initial='hidden'
-            variants={BoxVariants}
-            custom={index}
-          >
-            <Style.CardText>
-              <Title role={4} type='title' size='m' className='white'>
-                {item.title}
-              </Title>
-              <MarginBox mt={7} />
-              <Text type='body' size='l'>
-                {item.description}
-              </Text>
-            </Style.CardText>
-            <Style.ImageBox>
-              <Image
-                src={item.img}
-                width={240}
-                height={240}
-                alt='img_function.png'
-              />
-            </Style.ImageBox>
-          </Style.CardItem>
-        ))}
-      </Style.CardBox>
-    </Section>
+    <Style.BgTopContainer>
+      <Section bgcolor='#374553' padding={'128px 0 52px'}>
+        <Style.TitleBox>
+          <Title role={4} type='title' size='xl' className='white'>
+            <text
+              dangerouslySetInnerHTML={{ __html: t('main_body_text_09') }}
+            ></text>
+          </Title>
+        </Style.TitleBox>
+        <MarginBox mt={7} />
+        <Style.Discription>
+          <Title role={4} type='title' size='xs' className='gray'>
+            <text
+              dangerouslySetInnerHTML={{ __html: t('main_body_text_10') }}
+            ></text>
+          </Title>
+        </Style.Discription>
+        <MarginBox mt={70} />
+        <Style.CardBox ref={ref}>
+          {cardData.map((item: any, index: number) => (
+            <Style.CardItem
+              key={index}
+              ref={ref}
+              animate={controls}
+              initial='hidden'
+              variants={BoxVariants}
+              custom={index}
+            >
+              <Style.CardText>
+                <Title role={4} type='title' size='m' className='white'>
+                  {item.title}
+                </Title>
+                <MarginBox mt={7} />
+                <Text type='body' size='l'>
+                  {item.description}
+                </Text>
+              </Style.CardText>
+              <Style.ImageBox>
+                <Image
+                  src={item.img}
+                  width={240}
+                  height={240}
+                  alt='img_function.png'
+                />
+              </Style.ImageBox>
+            </Style.CardItem>
+          ))}
+        </Style.CardBox>
+      </Section>
+      <Style.BgBottomBox>
+        <Style.BottomLine />
+        <Style.BottomTriangle />
+      </Style.BgBottomBox>
+    </Style.BgTopContainer>
   );
 }
 

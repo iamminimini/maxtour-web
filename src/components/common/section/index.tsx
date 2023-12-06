@@ -21,8 +21,8 @@ function Section({
 
 const SectionContainer = styled.div<{ bgcolor: string; padding: string }>(
   (props) => ({
-    padding: props.padding,
     width: '100%',
+    padding: props.padding,
     backgroundColor: props.bgcolor,
     display: 'flex',
     justifyContent: 'center',
@@ -30,8 +30,8 @@ const SectionContainer = styled.div<{ bgcolor: string; padding: string }>(
   })
 );
 
-const InnerContainer = styled.div((props) => ({
-  width: 1196,
-}));
+const InnerContainer = styled.div`
+  width: 1196px;
+`;
 
 export default Section;

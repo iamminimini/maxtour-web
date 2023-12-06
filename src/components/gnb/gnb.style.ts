@@ -8,7 +8,7 @@ export const Container = styled.div`
       position: sticky;
       top: 0;
       z-index: 999;
-      background: white;
+      background: ${colors['palette-white']};
     `;
   }}
 `;

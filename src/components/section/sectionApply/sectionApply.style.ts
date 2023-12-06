@@ -5,13 +5,13 @@ export const TitleBox = styled.div`
     const { colors } = theme;
     return css`
       & .white {
-        color: #fff;
+        color: ${colors['palette-white']};
         span {
-          color: #0fcbdd;
+          color: ${colors['palette-mint-600']};
         }
       }
       &. gray {
-        color: #c8d0d9;
+        color: ${colors['palette-bluegray-200']};
       }
     `;
   }}
@@ -22,19 +22,14 @@ export const Discription = styled.div`
     const { colors } = theme;
     return css`
       & .gray {
-        color: #c8d0d9;
+        color: ${colors['palette-bluegray-200']};
       }
     `;
   }}
 `;
 
 export const ImageBox = styled.div`
-  ${({ theme }) => {
-    const { colors } = theme;
-    return css`
-      position: relative;
-    `;
-  }}
+  position: relative;
 `;
 
 export const CardText = styled.div`
@@ -43,7 +38,7 @@ export const CardText = styled.div`
     return css`
       padding: 73px 48px;
       & .white {
-        color: #fff;
+        color: ${colors['palette-white']};
       }
     `;
   }}
@@ -58,9 +53,9 @@ export const ButtonWrapper = styled.div`
       bottom: 40px;
       left: 32px;
       & .button {
-        color: #fff;
+        color: ${colors['palette-white']};
         svg {
-          color: #fff;
+          color: ${colors['palette-white']};
         }
       }
     `;
@@ -74,48 +69,50 @@ export const CropBox = styled.div`
       width: 0;
       height: 0;
       border-bottom: 72px solid transparent;
-      border-left: 72px solid #fff;
+      border-left: 72px solid ${colors['palette-white']};
       position: absolute;
       display: none;
     `;
   }}
 `;
 
-export const CardBox = styled.div({
-  width: '100%',
-  display: 'flex',
-  justifyContent: 'space-between',
-});
+export const CardBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
 
-export const CardItem = styled.div<{ 'data-src': string }>((props) => {
-  return {
-    width: 'calc(100% - 24px)',
-    height: 580,
-    display: 'flex',
-    justifyContent: 'space-between',
-    background: '#fff',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundImage: `url(${props['data-src']})`,
-    backgroundSize: 'cover',
-    cursor: 'pointer',
-    '& > p': {
-      color: '#606060',
-    },
-    '&:hover': {
-      backgroundSize: '110%',
-      '.cardCropBox': {
-        display: 'block',
+export const CardItem = styled.div<{ 'data-src': string }>(
+  ({ theme: { colors }, ...props }) => {
+    return {
+      width: 'calc(100% - 24px)',
+      height: 580,
+      display: 'flex',
+      justifyContent: 'space-between',
+      background: colors['palette-white'],
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundImage: `url(${props['data-src']})`,
+      backgroundSize: 'cover',
+      cursor: 'pointer',
+      '& > p': {
+        color: colors['palette-bluegray-700'],
       },
-      '.button': {
-        background: '#fff',
-        color: '#222222',
-        borderColor: '#C2C2C2',
-        '& svg': {
-          color: '#222222',
+      '&:hover': {
+        backgroundSize: '110%',
+        '.cardCropBox': {
+          display: 'block',
+        },
+        '.button': {
+          background: colors['palette-white'],
+          color: colors['palette-gray-900'],
+          borderColor: colors['palette-bluegray-400'],
+          '& svg': {
+            color: colors['palette-gray-900'],
+          },
         },
       },
-    },
-    position: 'relative',
-  };
-});
+      position: 'relative',
+    };
+  }
+);

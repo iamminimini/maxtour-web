@@ -1,7 +1,7 @@
 import SectionRegions from '@/src/components/section/sectionRegions/sectionRegions';
 import SectionContents from '@/src/components/section/sectionContents/sectionContents';
 import SectionApply from '@/src/components/section/sectionApply/sectionApply';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Footer from '@/src/components/footer/footer';
 import Header from '@/src/components/header/header';
 import Gnb from '@/src/components/gnb/gnb';
@@ -50,33 +50,26 @@ function Index() {
   );
 }
 
-const Container = styled.div((props) => ({
-  background: '#fff',
-}));
+const Container = styled.div`
+  ${({ theme }) => {
+    const { colors } = theme;
+    return css`
+      background: ${colors['palette-white']};
+    `;
+  }}
+`;
 
-const Contents = styled.div((props) => ({
-  background: '#fff',
-  width: '100%',
-  marginTop: 738,
-  position: 'relative',
-  top: -80,
-}));
-
-// const Section = styled.div((props) => ({
-//   display: 'flex',
-//   flexDirection: 'column',
-//   alignItems: 'flex-start',
-//   justifyContent: 'center',
-//   width: '100%',
-//   maxWidth: 1400,
-//   marginTop: 200,
-//   padding: props.theme.isMobile
-//     ? '20px 24px 120px 24px'
-//     : '24px 24px 200px 24px',
-// }));
-
-const InnerContainer = styled.div((props) => ({
-  // maxWidth: props.theme.isMobile ? '100%' : 1400,
-}));
+const Contents = styled.div`
+  ${({ theme }) => {
+    const { colors } = theme;
+    return css`
+      background: ${colors['palette-white']};
+      width: 100%;
+      margin-top: 738px;
+      position: relative;
+      top: -80px;
+    `;
+  }}
+`;
 
 export default Index;

@@ -33,27 +33,22 @@ export const TitleBox = styled.div`
     const { colors } = theme;
     return css`
       & .white {
-        color: #fff;
+        color: ${colors['palette-white']};
         span {
-          color: #0fcbdd;
+          color: ${colors['palette-mint-600']};
         }
       }
       &. gray {
-        color: #c8d0d9;
+        color: ${colors['palette-bluegray-200']};
       }
     `;
   }}
 `;
 
 export const ButtonBox = styled.div`
-  ${({ theme }) => {
-    const { colors } = theme;
-    return css`
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 24px;
-      cursor: pointer;
-    `;
-  }}
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  cursor: pointer;
 `;

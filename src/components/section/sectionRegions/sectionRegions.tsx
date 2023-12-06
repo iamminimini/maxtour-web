@@ -59,7 +59,7 @@ function SectionRegions() {
     hidden: (i: number) => ({ opacity: 1, y: 140, x: i * -405 }),
     visible: (i: number) => ({
       x: 0,
-      y: i === 1 ? -20 : 20,
+      y: i === 1 ? 20 : -20,
       transition: {
         type: 'spring',
         bounce: 0.4,
@@ -75,12 +75,12 @@ function SectionRegions() {
   }, [controls, inView]);
 
   return (
-    <BgTopContainer>
-      <BgTopBox>
-        <TopTriangle />
-        <TopLine />
-      </BgTopBox>
-      <Section padding={'48px 0 52px'}>
+    <Style.BgTopContainer>
+      <Style.BgTopBox>
+        <Style.TopTriangle />
+        <Style.TopLine />
+      </Style.BgTopBox>
+      <Section padding={'48px 0 122px'}>
         <Style.TitleBox ref={ref}>
           <Title role={4} type='title' size='xl'>
             <text
@@ -97,9 +97,9 @@ function SectionRegions() {
           </Title>
         </Style.Discription>
         <MarginBox mt={80} />
-        <CardBox ref={ref}>
+        <Style.CardBox ref={ref}>
           {cardData.map((item: any, index: number) => (
-            <CardItem
+            <Style.CardItem
               key={index}
               ref={ref}
               animate={controls}
@@ -109,7 +109,7 @@ function SectionRegions() {
               onMouseOver={() => setActive(item.id)}
               onMouseOut={() => setActive(false)}
             >
-              <ImageBox
+              <Style.ImageBox
                 data-src={active === item.id ? item.activeImg : item.img}
                 data-active={active === item.id}
                 className='image-box'
@@ -136,74 +136,12 @@ function SectionRegions() {
                   </Button>
                 </Style.ButtonWrapper>
               </Style.CardText>
-            </CardItem>
+            </Style.CardItem>
           ))}
-        </CardBox>
+        </Style.CardBox>
       </Section>
-    </BgTopContainer>
+    </Style.BgTopContainer>
   );
 }
 
-const BgTopContainer = styled.div({
-  width: '100%',
-  '& > img': {
-    width: '100%',
-  },
-});
-
-const CardBox = styled.div({
-  width: '100%',
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'space-between',
-});
-
-const CardItem = styled(motion.div)({
-  width: 'calc(33.3% - 14px)',
-  border: '8px solid transparent',
-  '&:hover': {
-    borderColor: '#99EEF4',
-  },
-  '&:hover .cardCropBox': {
-    background: '#606060',
-    display: 'none',
-  },
-  '&:hover .button': {
-    visibility: 'visible',
-  },
-});
-
-const ImageBox = styled.div<{ 'data-src': string; 'data-active': any }>(
-  (props) => {
-    return {
-      width: '100%',
-      minHeight: '280px',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      backgroundImage: `url(${props['data-src']})`,
-      backgroundSize: props['data-active'] ? '110%' : 'cover',
-      position: 'relative',
-    };
-  }
-);
-
-const BgTopBox = styled.div({
-  width: '100%',
-  height: 80,
-  position: 'relative',
-  display: 'flex',
-});
-
-const TopLine = styled.div({
-  height: '80px',
-  width: '100%',
-  background: '#fff',
-});
-
-const TopTriangle = styled.div({
-  width: 0,
-  height: 0,
-  borderTop: '80px solid transparent',
-  borderRight: '80px solid #fff',
-});
 export default SectionRegions;

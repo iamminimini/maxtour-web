@@ -6,7 +6,7 @@ export const Container = styled.div`
     return css`
       width: 100%;
       position: relative;
-      background: #fff
+      background: ${colors['palette-white']};
     `;
   }}
 `;
@@ -21,7 +21,7 @@ export const Footer = styled.div`
       justify-content: space-between;
       padding: 32px 0px 54px;
       margin: auto;
-      border-top: 1px solid #dedede;
+      border-top: 1px solid ${colors['palette-gray-300']};
     `;
   }}
 `;

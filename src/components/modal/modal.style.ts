@@ -3,23 +3,15 @@ import { Row, Select, Modal as AntdModal, Input } from 'antd';
 
 const { TextArea } = Input;
 
-export const Container = styled.div`
-  ${({ theme }) => {
-    const { colors } = theme;
-    return css`
-      width: 100%;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      background: white;
-    `;
-  }}
-`;
-1;
+export const StyleModal = styled(AntdModal)(({ theme }) => ({
+  button: {
+    maxWidth: '100% !important',
+  },
+}));
 
-export const StyleTextArea = styled(TextArea)(({ theme }) => ({
+export const StyleTextArea = styled(TextArea)(({ theme: { colors } }) => ({
   ['&&.ant-input']: {
-    borderColor: '#C2C2C2',
+    borderColor: colors['palette-gray-400'],
     borderRadius: 0,
     height: 200,
     resize: 'none',
@@ -43,17 +35,11 @@ export const StyleRow = styled(Row)(({ theme }) => ({
   },
 }));
 
-export const StyleModal = styled(AntdModal)(({ theme }) => ({
-  button: {
-    maxWidth: '100% !important',
-  },
-}));
-
-export const SelectSelect = styled(Select)(({ theme }) => ({
+export const SelectSelect = styled(Select)(({ theme: { colors } }) => ({
   ['&.ant-select:not(.ant-select-customize-input) .ant-select-selector']: {
     height: 48,
     borderRadius: 0,
-    borderColor: '#C2C2C2',
+    borderColor: colors['palette-gray-400'],
     fontSize: 16,
   },
   '&.ant-select .ant-select-arrow': {
@@ -61,17 +47,17 @@ export const SelectSelect = styled(Select)(({ theme }) => ({
   },
 }));
 
-export const StyleInput = styled(Input)(({ theme }) => ({
+export const StyleInput = styled(Input)(({ theme: { colors } }) => ({
   ['&&.ant-input']: {
     height: 48,
     borderRadius: 0,
-    borderColor: '#C2C2C2',
+    borderColor: colors['palette-gray-400'],
     fontSize: 16,
   },
 }));
 
-export const Required = styled.div((props) => ({
-  color: '#0FCBDD',
+export const Required = styled.div(({ theme: { colors } }) => ({
+  color: colors['palette-mint-600'],
   position: 'relative',
   top: 2,
   left: 3,

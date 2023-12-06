@@ -30,12 +30,15 @@ export default function Checkbox({
 }
 
 const StyledInput = styled.input<{ 'is-error': any }>((props) => {
+  const { colors } = props.theme;
   return {
     appearance: 'none',
     width: 18,
     height: 18,
     borderRadius: 0,
-    border: props['is-error'] ? '1px solid #ea1b1b' : '1px solid #C2C2C2',
+    border: props['is-error']
+      ? `1px solid ${colors['palette-red']}`
+      : `1px solid ${colors['palette-gray-400']}`,
     '&:checked': {
       borderColor: 'transparent',
       backgroundImage: 'url(images/checkbox.svg)',
