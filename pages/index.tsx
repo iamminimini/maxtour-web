@@ -18,7 +18,6 @@ function Index() {
   useEffect(() => {
     const queryParameters = new URLSearchParams(window.location.search);
     const lang = queryParameters.get('lang') || 'ko';
-    console.log('lang', lang);
     onChangeLang(lang);
   }, []);
 

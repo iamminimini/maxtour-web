@@ -13,7 +13,7 @@ const fetchPublicAddQuestions = async (
     '/maxtour-question',
     questionsContentsData
   );
-  return data.data;
+  return data;
 };
 
 export { fetchPublicAddQuestions };

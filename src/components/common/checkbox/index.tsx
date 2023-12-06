@@ -29,7 +29,7 @@ export default function Checkbox({
   );
 }
 
-const StyledInput = styled.input<{ 'is-error': boolean }>((props) => {
+const StyledInput = styled.input<{ 'is-error': any }>((props) => {
   return {
     appearance: 'none',
     width: 18,

@@ -111,7 +111,7 @@ function SectionRegions() {
             >
               <ImageBox
                 data-src={active === item.id ? item.activeImg : item.img}
-                active={active === item.id}
+                data-active={active === item.id}
                 className='image-box'
               />
               <Style.TopCropBox className={'cardCropBox'} />
@@ -173,7 +173,7 @@ const CardItem = styled(motion.div)({
   },
 });
 
-const ImageBox = styled.div<{ 'data-src': string; active: boolean }>(
+const ImageBox = styled.div<{ 'data-src': string; 'data-active': any }>(
   (props) => {
     return {
       width: '100%',
@@ -181,7 +181,7 @@ const ImageBox = styled.div<{ 'data-src': string; active: boolean }>(
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundImage: `url(${props['data-src']})`,
-      backgroundSize: props.active ? '110%' : 'cover',
+      backgroundSize: props['data-active'] ? '110%' : 'cover',
       position: 'relative',
     };
   }

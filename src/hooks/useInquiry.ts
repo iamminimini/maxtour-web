@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import useModal from './useModal';
 import { useEffect, useState } from 'react';
 import { fetchPublicAddQuestions } from '../api/questions';
+import { ModalFormType } from '../types/modal';
 
 type ReturnType = {
   isOpen: boolean;
@@ -22,18 +23,18 @@ type ReturnType = {
 const useInquiry = (): ReturnType => {
   const { t } = useTranslation();
   const { modalData, onClickCloseModal, onClickOpenModal } = useModal();
-  const [inputValue, setInputValue] = useState<any>({
-    question_category: undefined,
-    answer_email: '',
-    phone_number: '',
-    question_content: '',
+  const [inputValue, setInputValue] = useState<ModalFormType>({
+    category: undefined,
+    email: '',
+    phone: '',
+    contents: '',
     agreement: false,
   });
 
   const [isError, setIsError] = useState({
-    question_category: false,
-    answer_email: false,
-    question_content: false,
+    category: false,
+    email: false,
+    contents: false,
     agreement: false,
   });
 
@@ -45,12 +46,12 @@ const useInquiry = (): ReturnType => {
   };
 
   useEffect(() => {
-    const question_category = modalData?.innerData?.question_category;
+    const category = modalData?.innerData?.category;
     setInputValue({
-      question_category: question_category,
-      answer_email: '',
-      phone_number: '',
-      question_content: '',
+      category: category,
+      email: '',
+      phone: '',
+      contents: '',
       agreement: false,
     });
   }, [modalData.isOpen]);
@@ -76,13 +77,13 @@ const useInquiry = (): ReturnType => {
   const checkValidation = (type: string, value: any) => {
     switch (type) {
       // 성함 : 1 ~ 10자리 이하
-      case 'question_category':
+      case 'category':
         return value.length > 0;
       // 휴대폰번호 : 10자리 이하
-      case 'answer_email':
+      case 'email':
         return value.length > 0;
       // 이메일 : 주소앞자리 64자 + @ + 도메인 255자
-      case 'question_content':
+      case 'contents':
         return value.length > 0;
       // 문의내용 : 1000자 초과시
       case 'agreement':
@@ -96,27 +97,28 @@ const useInquiry = (): ReturnType => {
    * 문의하기 버튼 클릭
    */
   const onSubmit = async () => {
-    const { question_category, answer_email, question_content, agreement } =
-      inputValue;
+    const { category, email, contents, agreement, phone } = inputValue;
 
-    if (
-      question_category &&
-      answer_email.length > 0 &&
-      question_content.length > 0 &&
-      agreement
-    ) {
-      await fetchPublicAddQuestions(inputValue)
+    if (category && email.length > 0 && contents.length > 0 && agreement) {
+      const payload = {
+        category: category,
+        email: email,
+        contents: contents,
+        phone: phone,
+      };
+      await fetchPublicAddQuestions(payload)
         .then((response) => {
-          console.log(response);
+          alert('문의를 보냈습니다.');
+          onClosedModal();
         })
         .catch((e) => {
-          console.log('보내기 실패');
+          alert('문의 실패');
         });
     } else {
       setIsError({
-        question_category: !question_category,
-        answer_email: !answer_email,
-        question_content: !question_content,
+        category: !category,
+        email: !email,
+        contents: !contents,
         agreement: !agreement,
       });
     }
@@ -124,24 +126,24 @@ const useInquiry = (): ReturnType => {
 
   const selectOptions = [
     {
-      value: '1',
+      value: 'DIGITAL_TWEEN_3D_CONSTRUCTION',
       label: t('modal_dropdown_01'),
     },
     {
-      value: '2',
+      value: 'SPACE_VIEWER_360VR_CONSTRUCTION',
       label: t('modal_dropdown_02'),
     },
     {
-      value: '3',
+      value: 'MAXTOUR',
       label: t('modal_dropdown_03'),
     },
   ];
 
   const handleChangeOptions = (value: string) => {
-    setInputValue({ ...inputValue, question_category: value });
+    setInputValue({ ...inputValue, category: value });
     setIsError({
       ...isError,
-      question_category: !checkValidation('question_category', value),
+      category: !checkValidation('category', value),
     });
   };
 
@@ -159,7 +161,7 @@ const useInquiry = (): ReturnType => {
     if (item.openModal) {
       onClickOpenModal({
         isOpen: true,
-        innerData: { question_category: item.link },
+        innerData: { category: item.link },
       });
     } else {
       window.open(item.link);

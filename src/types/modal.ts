@@ -1,5 +1,5 @@
 export interface ModalInnerType {
-  question_category?: undefined | string;
+  category?: string | undefined;
 }
 
 export type ModalType = {
@@ -12,3 +12,11 @@ export type DescriptionsProps = {
   label: string;
   span?: any;
 };
+
+export interface ModalFormType {
+  category: string | undefined;
+  email: string;
+  phone?: string;
+  contents: string;
+  agreement: boolean;
+}

@@ -27,7 +27,7 @@ function SectionApply() {
       button: {
         text: t('main_body_text_23'),
         openModal: true,
-        link: '1',
+        link: 'DIGITAL_TWEEN_3D_CONSTRUCTION',
       },
     },
     {
@@ -37,7 +37,7 @@ function SectionApply() {
       button: {
         text: t('main_body_text_26'),
         openModal: true,
-        link: '2',
+        link: 'SPACE_VIEWER_360VR_CONSTRUCTION',
       },
     },
   ];

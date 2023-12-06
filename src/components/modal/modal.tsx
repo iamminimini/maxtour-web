@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button, Title, Text } from '@maxst-designsystem/maxst-design-system';
 import { useTranslation } from 'react-i18next';
-import { Col, Row, Select, Modal as AntdModal, Input } from 'antd';
-import styled from 'styled-components';
+import { Col, Input } from 'antd';
 import MarginBox from '../common/marginbox';
 import Checkbox from '../common/checkbox';
 import useInquiry from '@/src/hooks/useInquiry';
@@ -44,12 +43,12 @@ function Modal() {
         <Col>
           <Style.SelectSelect
             placeholder={t('modal_dropdown_placeholder_01')}
-            defaultValue={inputValue?.question_category}
-            value={inputValue?.question_category}
+            defaultValue={inputValue?.category}
+            value={inputValue?.category}
             onChange={handleChangeOptions}
             style={{ width: '100%' }}
             options={selectOptions}
-            status={isError.question_category ? 'error' : ''}
+            status={isError.category ? 'error' : ''}
           />
         </Col>
       </Style.StyleRow>
@@ -64,9 +63,9 @@ function Modal() {
         <Col>
           <Style.StyleInput
             placeholder={t('modal_textinput_placeholder_01')}
-            value={inputValue.answer_email}
-            onChange={(e) => onChangeValue('answer_email', e)}
-            status={isError.answer_email ? 'error' : ''}
+            value={inputValue.email}
+            onChange={(e) => onChangeValue('email', e)}
+            status={isError.email ? 'error' : ''}
           />
         </Col>
       </Style.StyleRow>
@@ -80,8 +79,8 @@ function Modal() {
         <Col>
           <Style.StyleInput
             placeholder={t('modal_dropdown_placeholder_02')}
-            value={inputValue.phone_number}
-            onChange={(e) => onChangeValue('phone_number', e)}
+            value={inputValue.phone}
+            onChange={(e) => onChangeValue('phone', e)}
           />
         </Col>
       </Style.StyleRow>
@@ -95,9 +94,9 @@ function Modal() {
         </Col>
         <Style.StyleTextArea
           placeholder={t('modal_dropdown_placeholder_03')}
-          value={inputValue.question_content}
-          onChange={(e) => onChangeValue('question_content', e)}
-          status={isError.question_content ? 'error' : ''}
+          value={inputValue.contents}
+          onChange={(e) => onChangeValue('contents', e)}
+          status={isError.contents ? 'error' : ''}
         />
       </Style.StyleRow>
       <MarginBox mt={16} />

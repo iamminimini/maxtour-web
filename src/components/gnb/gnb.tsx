@@ -14,7 +14,7 @@ function Gnb() {
       text: t('main_hero_button_01'),
       type: 'secondary',
       openModal: true,
-      link: '1',
+      link: 'DIGITAL_TWEEN_3D_CONSTRUCTION',
     },
     {
       text: t('main_hero_button_02'),

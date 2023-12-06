@@ -17,7 +17,7 @@ function Header() {
       text: t('main_hero_button_01'),
       type: 'tertiary',
       openModal: true,
-      link: '1',
+      link: 'DIGITAL_TWEEN_3D_CONSTRUCTION',
     },
     {
       text: t('main_hero_button_02'),
