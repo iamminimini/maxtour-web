@@ -10,7 +10,7 @@ export const TitleBox = styled.div`
           color: ${colors['palette-mint-600']};
         }
       }
-      &. gray {
+      & .gray {
         color: ${colors['palette-bluegray-200']};
       }
     `;

@@ -45,7 +45,7 @@ export const TitleBox = styled.div`
           color: ${colors['palette-mint-600']};
         }
       }
-      &. gray {
+      & .gray {
         color: ${colors['palette-bluegray-200']};
       }
     `;
@@ -92,7 +92,7 @@ export const CardItem = styled(motion.div)`
       display: flex;
       justify-content: space-between;
       background: ${colors['palette-white']};
-      & > p: {
+      & > p {
         color: ${colors['palette-gray-400']};
       }
     `;
