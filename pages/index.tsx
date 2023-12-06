@@ -18,6 +18,7 @@ function Index() {
   useEffect(() => {
     const queryParameters = new URLSearchParams(window.location.search);
     const lang = queryParameters.get('lang') || 'ko';
+    const email = queryParameters.get('email') || '';
     onChangeLang(lang);
   }, []);
 

@@ -1,4 +1,5 @@
 export interface ModalInnerType {
+  email: string;
   category?: string | undefined;
 }
 
