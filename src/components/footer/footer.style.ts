@@ -5,6 +5,8 @@ export const Container = styled.div`
     const { colors } = theme;
     return css`
       width: 100%;
+      position: relative;
+      background: #fff
     `;
   }}
 `;

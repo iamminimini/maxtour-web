@@ -20,4 +20,6 @@ const createAxios = (
   });
 };
 
-export const axiosPublic = createAxios(DEVEL_URL, '/v1/public');
+// export const axiosPublic = createAxios(DEVEL_URL, '/v1/public');
+export const axiosPublic = createAxios('https://alpha-api.maxst.com/platform-service', '/v1');
+

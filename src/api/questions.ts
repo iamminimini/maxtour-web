@@ -10,7 +10,7 @@ const fetchPublicAddQuestions = async (
   questionsContentsData: questionContentsType
 ) => {
   const { data } = await axiosPublic.post(
-    '/questions/add-questions',
+    '/maxtour-question',
     questionsContentsData
   );
   return data.data;

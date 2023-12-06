@@ -17,7 +17,8 @@ export const GnbContent = styled.div`
   ${({ theme }) => {
     const { colors } = theme;
     return css`
-      width: 1600px;
+      width: 90%;
+      max-width: 1600px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
