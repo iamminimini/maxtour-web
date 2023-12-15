@@ -28,7 +28,7 @@ function SectionRegions() {
       description: t('main_body_text_04'),
       button: {
         text: t('main_body_text_27'),
-        url: '',
+        url: 'https://map.maxtour.io/?area=busan',
       },
     },
     {
@@ -39,7 +39,7 @@ function SectionRegions() {
       description: t('main_body_text_06'),
       button: {
         text: t('main_body_text_27'),
-        url: '',
+        url: 'https://map.maxtour.io/?area=ulsan',
       },
     },
     {
@@ -50,7 +50,7 @@ function SectionRegions() {
       description: t('main_body_text_08'),
       button: {
         text: t('main_body_text_27'),
-        url: '',
+        url: 'https://map.maxtour.io/?area=gyeongnam',
       },
     },
   ];
@@ -73,6 +73,10 @@ function SectionRegions() {
       controls.start('visible');
     }
   }, [controls, inView]);
+
+  const onClickMaxtour = (item: any) => {
+    window.open(item.url);
+  };
 
   return (
     <Style.BgTopContainer>
@@ -131,6 +135,7 @@ function SectionRegions() {
                     size='l'
                     className='button'
                     iconRight={<ArrowOutwardLineIcon />}
+                    onClick={() => onClickMaxtour(item.button)}
                   >
                     {item.button.text}
                   </Button>

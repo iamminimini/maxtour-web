@@ -8,7 +8,7 @@ import useGnbButton from '@/src/hooks/useGnbButton';
 
 function Footer() {
   const { t } = useTranslation();
-  const { onClickGnbButton } = useGnbButton();
+  const { onClickGnbButton, onChangeLanguage } = useGnbButton();
 
   const siteMapData = [
     {
@@ -48,7 +48,9 @@ function Footer() {
           <Text type='body' size='m'>
             {t('main_footer_06')}
           </Text>
-          <LanguageLineIcon />
+          <Style.LangButton onClick={onChangeLanguage}>
+            <LanguageLineIcon />
+          </Style.LangButton>
         </Style.Company>
       </Style.Footer>
     </Style.Container>

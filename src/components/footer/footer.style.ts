@@ -39,6 +39,13 @@ export const SiteMap = styled.div`
   }}
 `;
 
+export const LangButton = styled.div`
+  ${({ theme }) => {
+    const { colors } = theme;
+    return css``;
+  }}
+`;
+
 export const Company = styled.div`
   ${({ theme }) => {
     const { colors } = theme;

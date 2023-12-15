@@ -23,6 +23,9 @@ type ReturnType = {
 const useInquiry = (): ReturnType => {
   const { t } = useTranslation();
   const { modalData, onClickCloseModal, onClickOpenModal } = useModal();
+  const sessionEmail =
+    typeof window !== 'undefined' ? sessionStorage.getItem('email') : '';
+
   const [inputValue, setInputValue] = useState<ModalFormType>({
     category: undefined,
     email: '',
@@ -49,7 +52,7 @@ const useInquiry = (): ReturnType => {
     const category = modalData?.innerData?.category;
     setInputValue({
       category: category,
-      email: '',
+      email: sessionEmail || '',
       phone: '',
       contents: '',
       agreement: false,
@@ -106,21 +109,20 @@ const useInquiry = (): ReturnType => {
     const { category, email, contents, agreement, phone } = inputValue;
 
     if (category && email.length > 0 && contents.length > 0 && agreement) {
-      alert('문의를 보냈습니다.(확인용알럿)');
-      //   const payload = {
-      //     category: category,
-      //     email: email,
-      //     contents: contents,
-      //     phone: phone,
-      //   };
-      //   await fetchPublicAddQuestions(payload)
-      //     .then((response) => {
-      //       alert('문의를 보냈습니다.');
-      //       onClosedModal();
-      //     })
-      //     .catch((e) => {
-      //       alert('문의 실패');
-      //     });
+      const payload = {
+        category: category,
+        email: email,
+        contents: contents,
+        phone: phone,
+      };
+      await fetchPublicAddQuestions(payload)
+        .then((response) => {
+          alert('문의를 보냈습니다');
+          onClosedModal();
+        })
+        .catch((e) => {
+          alert('문의 실패');
+        });
     } else {
       setIsError({
         category: !category,
@@ -164,7 +166,6 @@ const useInquiry = (): ReturnType => {
   };
 
   const onClickGnbButton = (item: any) => {
-    console.log('item', item);
     if (item.openModal) {
       onClickOpenModal({
         isOpen: true,

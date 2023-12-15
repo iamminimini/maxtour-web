@@ -41,7 +41,7 @@ const StyledInput = styled.input<{ 'is-error': any }>((props) => {
       : `1px solid ${colors['palette-gray-400']}`,
     '&:checked': {
       borderColor: 'transparent',
-      backgroundImage: 'url(images/checkbox.svg)',
+      backgroundImage: 'url(/images/checkbox.svg)',
       backgroundSize: '100% 100%',
       backgroundRepeat: 'no-repeat',
     },
